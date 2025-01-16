@@ -1,0 +1,211 @@
+@import url("https://fonts.googleapis.com/css2?family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&display=swap");
+
+@page {
+  size: A4;
+  margin: 0;
+}
+
+:root {
+  --body-bg: var(--clr-neutral-100);
+
+  --clr-red: #ff5757;
+  --clr-brown: #945233;
+  --clr-green: #117e40;
+
+  --clr-sale: var(--clr-neutral-900);
+  --clr-logo: var(--clr-neutral-900);
+  --border: 4px solid var(--clr-neutral-900);
+  --p-ff-sans: "PT Sans", sans-serif;
+  --p-ff-serif: "PT Serif", serif;
+
+  --inline-size: 210mm;
+  --block-size: 148.5mm;
+  --icon-size: 4rem;
+}
+
+.plant-print {
+  display: grid;
+  gap: var(--space-100);
+  align-items: start;
+}
+
+.print-wrapper {
+  overflow: auto;
+  outline: 2px dashed var(--clr-red);
+}
+
+.print-wrapper--colors {
+  --clr-sale: var(--clr-red);
+  --clr-logo: var(--clr-logo-green);
+  --border: 4px solid var(--clr-logo-brown);
+}
+
+.print-wrapper-inner {
+  width: var(--inline-size);
+  height: var(--block-size);
+
+  position: relative;
+
+  padding: 1.5rem 3rem;
+
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0 2rem;
+
+  font-family: var(--p-ff-serif);
+}
+
+.col {
+  padding: 2rem;
+  position: relative;
+  align-content: center;
+}
+
+.col:nth-child(1) {
+  text-align: center;
+}
+
+.col::before,
+.col::after {
+  content: "";
+  display: block;
+  width: 50%;
+  height: 40%;
+  position: absolute;
+  z-index: 1;
+}
+
+.col:nth-child(1)::before {
+  inset-block-start: 0;
+  inset-inline-start: 0;
+  border-block-start: var(--border);
+  border-inline-start: var(--border);
+}
+
+.col:nth-child(1)::after {
+  inset-block-end: 0;
+  inset-inline-start: 0;
+  border-block-end: var(--border);
+  border-inline-start: var(--border);
+}
+
+.col:nth-child(2)::before {
+  inset-block-start: 0;
+  inset-inline-end: 0;
+  border-block-start: var(--border);
+  border-inline-end: var(--border);
+}
+.col:nth-child(2)::after {
+  inset-block-end: 0;
+  inset-inline-end: 0;
+  border-block-end: var(--border);
+  border-inline-end: var(--border);
+}
+
+.plant-name {
+  font-size: 3rem;
+}
+
+.plant-name-type {
+  font-size: 2.25rem;
+  font-style: italic;
+}
+
+.plant-price-sale {
+  font-size: 4rem;
+  font-weight: 700;
+  color: var(--clr-sale);
+}
+.plant-price-sale::after,
+.plant-price-org::after {
+  content: ":-";
+}
+
+.plant-price-sale + .plant-price-org {
+  font-size: 2.625rem;
+  font-weight: 400;
+}
+
+.plant-price-org {
+  font-size: 4rem;
+  font-weight: 700;
+}
+.plant-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 2rem;
+}
+.plant-list-item {
+  display: grid;
+  grid-template-columns: 4rem 1fr;
+  gap: 1rem;
+  align-items: center;
+}
+.plant-icon {
+  width: var(--icon-size);
+  aspect-ratio: 1;
+}
+.plant-value {
+  font-size: 1.25rem;
+}
+.logo-wrapper {
+  grid-column: span 2;
+  text-align: center;
+  line-height: 1.2;
+}
+.logo-wrapper svg {
+  fill: var(--clr-logo);
+  width: 20%;
+  margin: 0 auto;
+}
+.print-name {
+  font-size: 1.8rem;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+.print-name-secondary {
+  text-transform: uppercase;
+  letter-spacing: 0.3rem;
+}
+
+@container names (height < 148.5mm) {
+  .plant-name {
+    font-size: 3rem;
+  }
+
+  .plant-name-secondary {
+    font-size: 1.625rem;
+  }
+}
+
+@media screen and (min-width: 55em) {
+  .plant-print {
+    grid-template-columns: 25% 75%;
+  }
+}
+
+@media print {
+  body {
+    /* A5 dimensions */
+    /* height: 210mm;
+    width: 148.5mm; */
+    width: var(--inline-size);
+    height: var(--block-size);
+  }
+
+  body header,
+  body .form {
+    display: none;
+  }
+
+  body .wrapper {
+    padding: 0;
+  }
+
+  .print-wrapper {
+    overflow: hidden;
+    outline: none;
+  }
+}

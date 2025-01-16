@@ -7,7 +7,9 @@ import {
   ScrollRestoration,
 } from "react-router";
 
-import stylesheet from "./app.css?url";
+import { AuthProvider } from "./contexts/AuthContext";
+
+import stylesheet from "./styles.css?url";
 
 export const links = () => [
   { rel: "preconnect", href: "https://fonts.googleapis.com" },
@@ -18,7 +20,7 @@ export const links = () => [
   },
   {
     rel: "stylesheet",
-    href: "https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap",
+    href: "https://fonts.googleapis.com/css2?family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&display=swap",
   },
   { rel: "stylesheet", href: stylesheet },
 ];
@@ -42,7 +44,11 @@ export function Layout({ children }) {
 }
 
 export default function App() {
-  return <Outlet />;
+  return (
+    <AuthProvider>
+      <Outlet />
+    </AuthProvider>
+  );
 }
 
 export function ErrorBoundary({ error }) {
@@ -71,5 +77,13 @@ export function ErrorBoundary({ error }) {
         </pre>
       )}
     </main>
+  );
+}
+
+export function HydrateFallback() {
+  return (
+    <div className="loading-splash">
+      <p>Loading, please wait...</p>
+    </div>
   );
 }
