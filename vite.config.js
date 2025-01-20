@@ -11,4 +11,5 @@ export default defineConfig({
   },
   plugins: [reactRouter()],
   ssr: false,
+  base: "/bloomable-price-tags/",
 });

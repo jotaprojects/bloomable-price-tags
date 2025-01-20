@@ -43,6 +43,7 @@ function PrintForm({ details, setDetails, isSubmitting, errors = {} }) {
         <input
           id="price"
           type="number"
+          step={0.01}
           required
           name="price"
           onChange={handleInputChange}
@@ -55,6 +56,7 @@ function PrintForm({ details, setDetails, isSubmitting, errors = {} }) {
         <input
           id="price_sale"
           type="number"
+          step={0.01}
           name="price_sale"
           onChange={handleInputChange}
           defaultValue={details.price_sale}
