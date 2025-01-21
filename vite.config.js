@@ -5,6 +5,4 @@ import netlifyPlugin from "@netlify/vite-plugin-react-router";
 
 export default defineConfig({
   plugins: [reactRouter(), netlifyPlugin()],
-  ssr: false,
-  base: "/bloomable-price-tags/",
 });
