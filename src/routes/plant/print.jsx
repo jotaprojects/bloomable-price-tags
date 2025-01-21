@@ -31,13 +31,14 @@ function PlantPrintPage() {
   );
 }
 
-// export async function clientLoader() {
-//   const isLoggedIn = await requireAuth();
+export async function clientLoader() {
+  const isLoggedIn = await requireAuth();
 
-//   if (!isLoggedIn) return redirect("/login");
+  if (!isLoggedIn) return redirect("/login");
 
-//   return null;
-// }
+  return null;
+}
+
 export async function clientAction({ request }) {
   const formData = await request.formData();
   const errors = {};
