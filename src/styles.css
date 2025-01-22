@@ -469,6 +469,10 @@ button:disabled,
   pointer-events: none;
 }
 
+.wrapper:has(.box--half) {
+  align-items: center;
+}
+
 .wrapper > .btn--w-icon:first-child {
   margin-inline-end: auto;
 }
@@ -504,6 +508,10 @@ button:disabled,
   flex-direction: column;
   gap: var(--space-100);
   width: 100%;
+}
+
+.box--half {
+  inline-size: 50%;
 }
 
 .box h1,

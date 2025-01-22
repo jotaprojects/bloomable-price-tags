@@ -37,16 +37,16 @@
 .print-wrapper--colors {
   --clr-sale: var(--clr-red);
   --clr-logo: var(--clr-logo-green);
-  --border: 4px solid var(--clr-logo-brown);
+  /* --border: 4px solid var(--clr-logo-brown); */
 }
 
 .print-wrapper-inner {
-  width: var(--inline-size);
-  height: var(--block-size);
+  inline-size: var(--inline-size);
+  block-size: var(--block-size);
 
   position: relative;
 
-  padding: 1.5rem 3rem;
+  padding: 1.5rem 2rem;
 
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -157,11 +157,11 @@
 }
 .logo-wrapper svg {
   fill: var(--clr-logo);
-  width: 20%;
+  width: 15%;
   margin: 0 auto;
 }
 .print-name {
-  font-size: 1.8rem;
+  font-size: 1.6rem;
   font-weight: bold;
   text-transform: uppercase;
 }
@@ -191,8 +191,11 @@
     /* A5 dimensions */
     /* height: 210mm;
     width: 148.5mm; */
-    width: var(--inline-size);
-    height: var(--block-size);
+    inline-size: var(--inline-size);
+    block-size: var(--block-size);
+
+    padding: 1.5rem 3rem;
+    margin: 0;
   }
 
   body header,
@@ -207,5 +210,11 @@
   .print-wrapper {
     overflow: hidden;
     outline: none;
+  }
+
+  .print-wrapper-inner {
+    inline-size: 100%;
+    block-size: 100%;
+    padding: 0;
   }
 }

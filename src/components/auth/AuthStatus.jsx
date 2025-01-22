@@ -1,13 +1,12 @@
 import { useState } from "react";
-import { redirect } from "react-router";
+import { useNavigate } from "react-router";
 
 import { useAuth } from "../../contexts/AuthContext";
 
 function AuthStatus() {
   const { currentUser, logout } = useAuth();
+  const navigate = useNavigate();
   const [error, setError] = useState("");
-
-  // console.log("currentUser", currentUser);
 
   // TODO: Remove this after development
   if (!currentUser) {
@@ -24,7 +23,7 @@ function AuthStatus() {
     try {
       await logout();
       console.log("Logged out");
-      return redirect("/login");
+      navigate("/login", { replace: true });
     } catch (e) {
       setError("Failed to log out.");
     }

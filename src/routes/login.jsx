@@ -8,7 +8,7 @@ import { requireAuth } from "../utils";
 
 export function meta() {
   return [
-    { title: "Log In" },
+    { title: "Log In - Bloomable" },
     { name: "description", content: "Log in to Bloomable Price tags." },
   ];
 }
@@ -21,7 +21,7 @@ function LoginPage() {
   return (
     <>
       <h1>Log In</h1>
-      <div className="box">
+      <div className="box box--half">
         {errors && <p className="error">{errors}</p>}
         <Form method="post" id="login-form" className="form">
           <div className="form__group">

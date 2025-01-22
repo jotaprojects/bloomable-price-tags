@@ -84,8 +84,10 @@ export function ErrorBoundary({ error }) {
 
 export function HydrateFallback() {
   return (
-    <div className="loading-splash">
-      <p>Loading, please wait...</p>
+    <div className="wrapper">
+      <div className="loading-splash">
+        <p>Loading, please wait...</p>
+      </div>
     </div>
   );
 }

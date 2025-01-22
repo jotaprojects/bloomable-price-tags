@@ -12,6 +12,16 @@ export function links() {
   return [{ rel: "stylesheet", href: stylesheet }];
 }
 
+export function meta() {
+  return [
+    { title: "Print price tags - Bloomable" },
+    {
+      name: "description",
+      content: "Enter information and print a price tag from Bloomable.",
+    },
+  ];
+}
+
 function PlantPrintPage() {
   const [details, setDetails] = useState({});
   const { state } = useNavigation();
