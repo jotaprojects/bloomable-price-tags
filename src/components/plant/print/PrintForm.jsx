@@ -3,7 +3,6 @@ import { Form } from "react-router";
 function PrintForm({ details, setDetails, isSubmitting, errors = {} }) {
   function handleInputChange(e) {
     const { name, value, checked } = e.target;
-    console.log("PrintForm -> checked", checked);
 
     if (name === "colors") {
       setDetails((prev) => ({ ...prev, colors: checked }));

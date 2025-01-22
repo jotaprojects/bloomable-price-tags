@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { redirect, useNavigate } from "react-router";
+import { redirect } from "react-router";
+
 import { useAuth } from "../../contexts/AuthContext";
 
 function AuthStatus() {
@@ -23,7 +24,7 @@ function AuthStatus() {
     try {
       await logout();
       console.log("Logged out");
-      return redirect("login");
+      return redirect("/login");
     } catch (e) {
       setError("Failed to log out.");
     }
@@ -35,6 +36,7 @@ function AuthStatus() {
       <button className="btn--sm" onClick={handleLogout}>
         Log Out
       </button>
+      {error && <span>{error}</span>}
     </div>
   );
 }
