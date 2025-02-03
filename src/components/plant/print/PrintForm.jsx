@@ -14,6 +14,32 @@ function PrintForm({ details, setDetails, isSubmitting, errors = {} }) {
 
   return (
     <Form method="post" id="print-form" className="form">
+      {/* <div className="form__group">
+        <label htmlFor="format">Format</label>
+        <select
+          id="format"
+          name="format"
+          onChange={handleInputChange}
+          defaultValue={details.format}
+        >
+          <option value="a5">A5</option>
+          <option value="a4">A4</option>
+        </select>
+        {errors?.format && <p className="form__error">{errors.format}</p>}
+      </div> */}
+      <div className="form__group">
+        <label htmlFor="layout">Layout</label>
+        <select
+          id="layout"
+          name="layout"
+          onChange={handleInputChange}
+          defaultValue={details.layout}
+        >
+          <option value="layout_two_cols">2 columns</option>
+          <option value="layout_one_col">1 column</option>
+        </select>
+        {errors?.layout && <p className="form__error">{errors.layout}</p>}
+      </div>
       <div className="form__group">
         <label htmlFor="name">Name</label>
         <input

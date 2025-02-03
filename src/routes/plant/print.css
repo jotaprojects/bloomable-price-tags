@@ -14,13 +14,16 @@
 
   --clr-sale: var(--clr-neutral-900);
   --clr-logo: var(--clr-neutral-900);
-  --border: 4px solid var(--clr-neutral-900);
+  --border: 2px solid var(--clr-neutral-900);
   --p-ff-sans: "PT Sans", sans-serif;
   --p-ff-serif: "PT Serif", serif;
 
   --inline-size: 210mm;
   --block-size: 148.5mm;
   --icon-size: 4rem;
+
+  /* Layout */
+  --layout-grid: 1fr 1fr;
 }
 
 .plant-print {
@@ -40,66 +43,58 @@
   /* --border: 4px solid var(--clr-logo-brown); */
 }
 
+.print-wrapper--layout-two {
+}
+
+.print-wrapper--layout-one {
+  --layout-grid: 1fr;
+}
+
 .print-wrapper-inner {
   inline-size: var(--inline-size);
   block-size: var(--block-size);
-
-  position: relative;
-
-  padding: 1.5rem 2rem;
-
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 0 2rem;
-
   font-family: var(--p-ff-serif);
+  display: grid;
+  padding: 1.5rem 2rem;
+  position: relative;
+}
+
+.col-wrapper {
+  display: grid;
+  grid-template-columns: var(--layout-grid);
+  gap: 0 2rem;
+  position: relative;
+  border: var(--border);
+}
+
+.col-wrapper::before,
+.col-wrapper::after {
+  content: "";
+  display: block;
+  position: absolute;
+  z-index: 1;
+  background-color: var(--clr-neutral-100);
+}
+
+.col-wrapper::before {
+  inset-inline: 30%;
+  inset-block: -4px;
+}
+
+.col-wrapper::after {
+  inset-inline: -4px;
+  inset-block: 30%;
 }
 
 .col {
   padding: 2rem;
   position: relative;
   align-content: center;
+  z-index: 2; /* Over the before/after element */
 }
 
 .col:nth-child(1) {
   text-align: center;
-}
-
-.col::before,
-.col::after {
-  content: "";
-  display: block;
-  width: 50%;
-  height: 40%;
-  position: absolute;
-  z-index: 1;
-}
-
-.col:nth-child(1)::before {
-  inset-block-start: 0;
-  inset-inline-start: 0;
-  border-block-start: var(--border);
-  border-inline-start: var(--border);
-}
-
-.col:nth-child(1)::after {
-  inset-block-end: 0;
-  inset-inline-start: 0;
-  border-block-end: var(--border);
-  border-inline-start: var(--border);
-}
-
-.col:nth-child(2)::before {
-  inset-block-start: 0;
-  inset-inline-end: 0;
-  border-block-start: var(--border);
-  border-inline-end: var(--border);
-}
-.col:nth-child(2)::after {
-  inset-block-end: 0;
-  inset-inline-end: 0;
-  border-block-end: var(--border);
-  border-inline-end: var(--border);
 }
 
 .plant-name {
@@ -116,6 +111,7 @@
   font-weight: 700;
   color: var(--clr-sale);
 }
+
 .plant-price-sale::after,
 .plant-price-org::after {
   content: ":-";
@@ -130,41 +126,50 @@
   font-size: 4rem;
   font-weight: 700;
 }
+
 .plant-list {
   list-style: none;
   margin: 0;
   padding: 0;
   display: grid;
   gap: 2rem;
+  justify-content: center;
 }
+
 .plant-list-item {
   display: grid;
   grid-template-columns: 4rem 1fr;
   gap: 1rem;
   align-items: center;
 }
+
 .plant-icon {
   width: var(--icon-size);
   aspect-ratio: 1;
 }
+
 .plant-value {
   font-size: 1.25rem;
 }
+
 .logo-wrapper {
-  grid-column: span 2;
+  grid-column: 1 / -1;
   text-align: center;
   line-height: 1.2;
 }
+
 .logo-wrapper svg {
   fill: var(--clr-logo);
   width: 15%;
   margin: 0 auto;
 }
+
 .print-name {
   font-size: 1.6rem;
   font-weight: bold;
   text-transform: uppercase;
 }
+
 .print-name-secondary {
   text-transform: uppercase;
   letter-spacing: 0.3rem;
@@ -205,6 +210,10 @@
 
   body .wrapper {
     padding: 0;
+  }
+
+  main {
+    box-shadow: none;
   }
 
   .print-wrapper {

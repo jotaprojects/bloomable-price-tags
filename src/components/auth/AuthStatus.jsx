@@ -22,7 +22,6 @@ function AuthStatus() {
 
     try {
       await logout();
-      console.log("Logged out");
       navigate("/login", { replace: true });
     } catch (e) {
       setError("Failed to log out.");
@@ -32,7 +31,7 @@ function AuthStatus() {
   return (
     <div className="auth-wrapper">
       <strong>Logged in as:</strong> {currentUser.email}
-      <button className="btn--sm" onClick={handleLogout}>
+      <button className="btn--secondary btn--sm" onClick={handleLogout}>
         Log Out
       </button>
       {error && <span>{error}</span>}
