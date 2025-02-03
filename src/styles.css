@@ -1,92 +1,94 @@
-/* Box sizing rules */
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
+@layer reset {
+  /* Box sizing rules */
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
 
-/* Prevent font size inflation */
-html {
-  -moz-text-size-adjust: none;
-  -webkit-text-size-adjust: none;
-  text-size-adjust: none;
-}
+  /* Prevent font size inflation */
+  html {
+    -moz-text-size-adjust: none;
+    -webkit-text-size-adjust: none;
+    text-size-adjust: none;
+  }
 
-/* Remove default margin in favour of better control in authored CSS */
-body,
-h1,
-h2,
-h3,
-h4,
-p,
-figure,
-blockquote,
-dl,
-dd {
-  margin-block-end: 0;
-}
+  /* Remove default margin in favour of better control in authored CSS */
+  body,
+  h1,
+  h2,
+  h3,
+  h4,
+  p,
+  figure,
+  blockquote,
+  dl,
+  dd {
+    margin-block-end: 0;
+  }
 
-/* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
-ul[role="list"],
-ol[role="list"] {
-  list-style: none;
-}
+  /* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
+  ul[role="list"],
+  ol[role="list"] {
+    list-style: none;
+  }
 
-/* Set core body defaults */
-body {
-  min-height: 100vh;
-  line-height: 1.5;
-}
+  /* Set core body defaults */
+  body {
+    min-height: 100vh;
+    line-height: 1.5;
+  }
 
-/* Set shorter line heights on headings and interactive elements */
-h1,
-h2,
-h3,
-h4,
-button,
-input,
-label {
-  line-height: 1.1;
-}
+  /* Set shorter line heights on headings and interactive elements */
+  h1,
+  h2,
+  h3,
+  h4,
+  button,
+  input,
+  label {
+    line-height: 1.1;
+  }
 
-/* Balance text wrapping on headings */
-h1,
-h2,
-h3,
-h4 {
-  text-wrap: balance;
-}
+  /* Balance text wrapping on headings */
+  h1,
+  h2,
+  h3,
+  h4 {
+    text-wrap: balance;
+  }
 
-/* A elements that don't have a class get default styles */
-a:not([class]) {
-  text-decoration-skip-ink: auto;
-  color: currentColor;
-}
+  /* A elements that don't have a class get default styles */
+  a:not([class]) {
+    text-decoration-skip-ink: auto;
+    color: currentColor;
+  }
 
-/* Make images easier to work with */
-img,
-picture,
-svg {
-  max-width: 100%;
-  display: block;
-}
+  /* Make images easier to work with */
+  img,
+  picture,
+  svg {
+    max-width: 100%;
+    display: block;
+  }
 
-/* Inherit fonts for inputs and buttons */
-input,
-button,
-textarea,
-select {
-  font: inherit;
-}
+  /* Inherit fonts for inputs and buttons */
+  input,
+  button,
+  textarea,
+  select {
+    font: inherit;
+  }
 
-/* Make sure textareas without a rows attribute are not tiny */
-textarea:not([rows]) {
-  min-height: 10em;
-}
+  /* Make sure textareas without a rows attribute are not tiny */
+  textarea:not([rows]) {
+    min-height: 10em;
+  }
 
-/* Anything that has been anchored to should have extra scroll margin */
-:target {
-  scroll-margin-block: 5ex;
+  /* Anything that has been anchored to should have extra scroll margin */
+  :target {
+    scroll-margin-block: 5ex;
+  }
 }
 
 :root {
@@ -114,16 +116,18 @@ textarea:not([rows]) {
   --prussian-blue: hsla(207, 43%, 16%, 1);
   --dark-spring-green: hsl(146, 76%, 28%);
   --dark-spring-green: #117e40;
-  --tea-green: hsla(139, 43%, 84%, 1);
+  --tea-green: #c5e8d0;
   --chestnut: hsl(19, 49%, 39%);
   --chestnut: #945233;
   --antiflash-white: hsla(204, 20%, 95%, 1);
 
-  --clr-green-200-hsl: 139, 43%, 84%;
-  --clr-green-300-hsl: 145, 30%, 43%;
+  --clr-green-200-hsl: 146, 76%, 32%;
+  --clr-green-400-hsl: 146, 76%, 28%;
+  --clr-green-600-hsl: 124, 27%, 24%;
 
   --clr-green-200: hsl(var(--clr-green-200-hsl));
-  --clr-green-300: hsl(var(--clr-green-300-hsl));
+  --clr-green-400: hsl(var(--clr-green-400-hsl));
+  --clr-green-600: hsl(var(--clr-green-600-hsl));
 
   /* From logo */
   --clr-logo-green-hsl: 146, 76%, 28%;
@@ -180,9 +184,8 @@ body {
 }
 
 header {
-  background-color: var(--clr-green-200);
-  color: var(--clr-neutral-900);
-  box-shadow: inset 0 -0.5rem 1rem hsl(var(--clr-green-300-hsl), 0.2);
+  background-color: var(--clr-green-400);
+  color: var(--clr-neutral-100);
 }
 
 nav {
@@ -192,12 +195,12 @@ nav {
   font-size: 0.8rem;
   font-weight: var(--fw-bold);
   letter-spacing: 0.1rem;
-  border-left: 2px solid var(--clr-green-300);
+  border-left: 2px solid var(--clr-green-400);
   padding-inline-start: var(--space-fluid-100);
 }
 
 nav a {
-  color: var(--clr-logo-green);
+  color: var(--clr-green-400);
   background-color: transparent;
   padding: var(--space-50) var(--space-100);
   border-radius: var(--border-pill);
@@ -209,7 +212,11 @@ nav a {
 nav a:hover,
 .nav__link--active {
   color: var(--clr-neutral-100);
-  background-color: var(--clr-green-300);
+  background-color: var(--clr-green-400);
+}
+
+main {
+  box-shadow: inset 0 0.5rem 1rem hsl(var(--clr-neutral-900-hsl), 0.2);
 }
 
 h1 {
@@ -332,12 +339,14 @@ tbody th {
 
 button,
 .btn {
-  --_btn-base-bg: var(--clr-green-300);
+  --_btn-base-bg: var(--clr-green-400);
+  --_btn-base-bg-hsl: var(--clr-green-400-hsl);
   --_btn-base-color: var(--clr-neutral-100);
+  --_btn-base-color-hsl: var(--clr-neutral-100-hsl);
   --_btn-radius: var(--border-radius);
   --_btn-padding: var(--space-50) var(--space-100);
-  --_btn-border: 1px solid var(--clr-green-300);
-  --_btn-hover-bg: hsl(var(--clr-green-300-hsl), 0.6);
+  --_btn-border: 1px solid var(--clr-green-400);
+  --_btn-hover-bg: hsl(var(--_btn-base-bg-hsl), 0.8);
   --_btn-hover-color: var(--clr-neutral-100);
 
   background-color: var(--_btn-base-bg);
@@ -375,8 +384,8 @@ button:disabled,
 
 .btn--secondary {
   --_btn-base-bg: var(--clr-neutral-200);
+  --_btn-base-bg-hsl: var(--clr-neutral-200-hsl);
   --_btn-base-color: var(--clr-neutral-900);
-  --_btn-hover-bg: hsl(var(--clr-neutral-900-hsl), 0.15);
   --_btn-hover-color: var(--clr-neutral-900);
   --_btn-border: 1px solid var(--clr-neutral-900);
 }
